@@ -4,709 +4,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jai Sai | AWS Cloud DevOps Engineer</title>
-
-<!-- 3D GRAPHICS LIBRARY -->
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
-  }
-}
-</script>
+<title>Jai Sai | Cloud DevOps Engineer</title>
 
 <style>
-/* =====================================
-   GLOBAL DESIGN SYSTEM
-===================================== */
-
-:root {
-    --bg: #050816;
-    --panel: #101a30;
-    --panel2: #14223b;
-    --blue: #38bdf8;
-    --purple: #a78bfa;
-    --green: #4ade80;
-    --white: #f8fafc;
-    --muted: #94a3b8;
-    --border: rgba(148,163,184,.16);
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
     scroll-behavior: smooth;
 }
 
 body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+    background: #080d1a;
+    color: white;
     overflow-x: hidden;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-.container {
-    width: 90%;
-    max-width: 1250px;
-    margin: auto;
-}
-
-section {
-    padding: 110px 0;
-    position: relative;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 65px;
-}
-
-.section-heading h2 {
-    font-size: clamp(30px, 4vw, 46px);
-    margin-bottom: 12px;
-}
-
-.section-heading p {
-    color: var(--muted);
-}
-
-.gradient-text {
-    background: linear-gradient(
-        90deg, #38bdf8, #a78bfa, #38bdf8
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 5s linear infinite;
-}
-
-@keyframes gradientMove {
-    to { background-position: 200% center; }
-}
-
-/* =====================================
-   ANIMATED BACKGROUND
-===================================== */
-
-.background-glow {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    filter: blur(150px);
-    opacity: .13;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.glow-one {
-    background: #2563eb;
-    top: -200px;
-    left: -200px;
-}
-
-.glow-two {
-    background: #9333ea;
-    right: -200px;
-    bottom: -200px;
-}
-
-/* =====================================
-   NAVIGATION
-===================================== */
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(5,8,22,.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-}
-
-.navbar {
-    height: 75px;
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 22px 8%;
+    background: rgba(8,13,26,0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(15px);
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 800;
-    color: var(--blue);
-    letter-spacing: -1px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #00e5ff;
 }
 
-.logo span {
+nav a {
     color: white;
-}
-
-.nav-links {
-    display: flex;
-    gap: 27px;
-    list-style: none;
-}
-
-.nav-links a {
-    font-size: 14px;
-    color: var(--muted);
+    text-decoration: none;
+    margin-left: 25px;
     transition: .3s;
 }
 
-.nav-links a:hover {
-    color: var(--blue);
+nav a:hover {
+    color: #00e5ff;
 }
-
-.menu-button {
-    display: none;
-    background: transparent;
-    border: 0;
-    color: white;
-    font-size: 27px;
-    cursor: pointer;
-}
-
-/* =====================================
-   HERO SECTION
-===================================== */
 
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 100px;
+    justify-content: space-between;
+    padding: 120px 10% 60px;
+    gap: 40px;
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    align-items: center;
-    gap: 30px;
-}
-
-.availability {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--green);
-    border: 1px solid rgba(74,222,128,.25);
-    background: rgba(74,222,128,.06);
-    padding: 9px 15px;
-    border-radius: 30px;
-    font-size: 12px;
-    margin-bottom: 25px;
-}
-
-.pulse {
-    width: 8px;
-    height: 8px;
-    background: var(--green);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--green);
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    50% { opacity: .3; transform: scale(.7); }
+.hero-content {
+    max-width: 600px;
+    animation: slideIn 1s ease;
 }
 
 .hero h1 {
-    font-size: clamp(40px, 5.4vw, 70px);
-    line-height: 1.12;
-    letter-spacing: -2px;
+    font-size: clamp(38px, 5vw, 65px);
+    margin: 15px 0;
 }
 
-.hero-description {
-    margin: 25px 0;
-    color: var(--muted);
-    font-size: 16px;
-    max-width: 600px;
-    line-height: 1.9;
+.hero h1 span {
+    color: #00e5ff;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+.hero p {
+    color: #aab6ca;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.tag {
+    color: #00e5ff;
+    letter-spacing: 3px;
 }
 
 .btn {
-    padding: 13px 24px;
-    border-radius: 9px;
-    font-weight: 700;
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    background: #00d9ff;
+    color: #080d1a;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
     transition: .3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-primary {
-    color: #06101e;
-    background: var(--blue);
-    box-shadow: 0 0 25px rgba(56,189,248,.2);
-}
-
-.btn-secondary {
-    border: 1px solid var(--border);
-    color: white;
 }
 
 .btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(56,189,248,.2);
+    box-shadow: 0 0 25px #00d9ff;
 }
 
-.hero-info {
-    display: flex;
-    gap: 30px;
-    margin-top: 40px;
-    flex-wrap: wrap;
+/* 3D animated object */
+
+.cube-container {
+    perspective: 900px;
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
 }
 
-.hero-info strong {
-    display: block;
-    color: var(--blue);
-    font-size: 23px;
-}
-
-.hero-info small {
-    color: var(--muted);
-}
-
-/* =====================================
-   THREE.JS 3D CANVAS
-===================================== */
-
-.scene-container {
-    height: 520px;
+.cube {
     position: relative;
-    perspective: 1000px;
+    width: 180px;
+    height: 180px;
+    margin: 30px auto;
+    transform-style: preserve-3d;
+    animation: rotate 12s infinite linear;
 }
 
-#three-scene {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.scene-label {
-    position: absolute;
-    background: rgba(16,26,48,.85);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    padding: 11px 16px;
-    border-radius: 10px;
-    color: var(--blue);
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 0 25px rgba(56,189,248,.12);
-    animation: floating 4s ease-in-out infinite;
-}
-
-.label-one {
-    top: 15%;
-    left: 0;
-}
-
-.label-two {
-    top: 40%;
-    right: 0;
-    animation-delay: 1s;
-}
-
-.label-three {
-    bottom: 13%;
-    left: 8%;
-    animation-delay: 2s;
-}
-
-@keyframes floating {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-16px); }
-}
-
-/* =====================================
-   STATISTICS
-===================================== */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 20px;
-}
-
-.stat-card {
-    background: linear-gradient(145deg,#111c33,#0b1325);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;
-    transition: .3s;
-}
-
-.stat-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--blue);
-}
-
-.stat-card h2 {
-    color: var(--blue);
-    font-size: 38px;
-}
-
-.stat-card p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-/* =====================================
-   ABOUT SECTION
-===================================== */
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-.glass-card {
-    background: rgba(16,26,48,.75);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 32px;
-    transition: .4s;
-}
-
-.glass-card:hover {
-    border-color: var(--blue);
-    transform: translateY(-5px);
-}
-
-.glass-card h3 {
-    color: var(--blue);
-    margin-bottom: 18px;
-    font-size: 21px;
-}
-
-.glass-card p {
-    color: var(--muted);
-    line-height: 1.9;
-}
-
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-}
-
-.detail-row span:first-child {
-    color: var(--muted);
-}
-
-.detail-row span:last-child {
-    text-align: right;
-}
-
-/* =====================================
-   SKILLS
-===================================== */
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 22px;
-}
-
-.skill-card {
-    background: var(--panel);
-    padding: 28px;
-    border-radius: 15px;
-    border: 1px solid var(--border);
-    transition: .4s;
-}
-
-.skill-card:hover {
-    transform: translateY(-8px) scale(1.015);
-    border-color: var(--purple);
-    box-shadow: 0 15px 40px rgba(129,140,248,.1);
-}
-
-.skill-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.skill-card h3 {
-    margin-bottom: 18px;
-    color: var(--blue);
-}
-
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-}
-
-.tag {
-    padding: 7px 12px;
-    border-radius: 7px;
-    background: var(--panel2);
-    color: #cbd5e1;
-    font-size: 12px;
-    border: 1px solid var(--border);
-    transition: .3s;
-}
-
-.tag:hover {
-    color: var(--blue);
-    border-color: var(--blue);
-    transform: translateY(-3px);
-}
-
-/* =====================================
-   EXPERIENCE TIMELINE
-===================================== */
-
-.timeline {
-    max-width: 850px;
-    margin: auto;
-    border-left: 2px solid var(--blue);
-    padding-left: 35px;
-}
-
-.timeline-card {
-    position: relative;
-    margin-bottom: 35px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 30px;
-}
-
-.timeline-card::before {
-    content: "";
-    position: absolute;
-    left: -44px;
-    top: 32px;
-    width: 15px;
-    height: 15px;
-    background: var(--blue);
-    border-radius: 50%;
-    box-shadow: 0 0 20px var(--blue);
-}
-
-.timeline-card h3 {
-    color: var(--blue);
-}
-
-.timeline-date {
-    color: #facc15;
-    font-size: 13px;
-    margin: 8px 0;
-}
-
-.timeline-card p,
-.timeline-card li {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.timeline-card ul {
-    margin: 18px 0 0 20px;
-}
-
-.timeline-card li {
-    margin-bottom: 10px;
-}
-
-/* =====================================
-   PROJECTS
-===================================== */
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 25px;
-}
-
-.project-card {
-    background: linear-gradient(145deg,#111c33,#0a1224);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 32px;
-    position: relative;
-    overflow: hidden;
-    transition: .4s;
-}
-
-.project-card::after {
-    content: "";
+.face {
     position: absolute;
     width: 180px;
     height: 180px;
-    background: var(--blue);
-    filter: blur(100px);
-    opacity: 0;
-    top: -80px;
-    right: -80px;
-    transition: .4s;
-}
-
-.project-card:hover::after {
-    opacity: .18;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--blue);
-}
-
-.project-icon {
-    font-size: 40px;
-    margin-bottom: 18px;
-}
-
-.project-card h3 {
-    color: var(--blue);
-    font-size: 21px;
-    margin-bottom: 14px;
-}
-
-.project-card p,
-.project-card li {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.project-card ul {
-    margin: 15px 0 20px 20px;
-}
-
-/* =====================================
-   CERTIFICATIONS
-===================================== */
-
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 25px;
-}
-
-.cert-card {
-    background: linear-gradient(135deg,#182947,#101a30);
-    border: 1px solid var(--border);
-    padding: 35px;
-    border-radius: 18px;
-    transition: .4s;
-}
-
-.cert-card:hover {
-    transform: scale(1.03);
-    border-color: var(--purple);
-}
-
-.cert-card .award {
-    font-size: 38px;
-    margin-bottom: 15px;
-}
-
-.cert-card h3 {
-    color: var(--blue);
-}
-
-.cert-card p {
-    color: var(--muted);
-    margin-top: 10px;
-}
-
-/* =====================================
-   CONTACT
-===================================== */
-
-.contact-box {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-    padding: 60px 30px;
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background: radial-gradient(
-        circle at top,
-        rgba(56,189,248,.12),
-        var(--panel)
-    );
-}
-
-.contact-box h2 {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.contact-box p {
-    color: var(--muted);
-}
-
-.contact-links {
+    border: 2px solid #00e5ff;
+    background: rgba(0,229,255,.09);
+    box-shadow: inset 0 0 30px #00e5ff44;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 30px;
+    align-items: center;
+    font-size: 45px;
+    color: #00e5ff;
+    backdrop-filter: blur(5px);
 }
 
-.contact-links a {
-    padding: 12px 22px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    color: var(--blue);
+.front { transform: translateZ(90px); }
+.back { transform: rotateY(180deg) translateZ(90px); }
+.right { transform: rotateY(90deg) translateZ(90px); }
+.left { transform: rotateY(-90deg) translateZ(90px); }
+.top { transform: rotateX(90deg) translateZ(90px); }
+.bottom { transform: rotateX(-90deg) translateZ(90px); }
+
+@keyframes rotate {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+section {
+    padding: 90px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: #00e5ff;
+}
+
+.skills, .projects, .certifications {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    padding: 28px;
+    border: 1px solid #1b344c;
+    background: #101a2d;
+    border-radius: 15px;
     transition: .3s;
 }
 
-.contact-links a:hover {
-    background: var(--blue);
-    color: #06101e;
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #00e5ff;
+    box-shadow: 0 10px 35px #00e5ff18;
 }
 
-/* =====================================
-   FOOTER
-===================================== */
+.card h3 {
+    color: #00e5ff;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #aab6ca;
+    line-height: 1.7;
+}
+
+.about {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+    color: #aab6ca;
+    line-height: 1.9;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact a {
+    color: #00e5ff;
+    text-decoration: none;
+}
 
 footer {
-    padding: 35px 0;
-    border-top: 1px solid var(--border);
     text-align: center;
-    color: var(--muted);
-    font-size: 13px;
+    padding: 25px;
+    background: #101a2d;
+    color: #aab6ca;
 }
-
-/* =====================================
-   REVEAL ANIMATIONS
-===================================== */
 
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity .8s ease, transform .8s ease;
+    transform: translateY(35px);
+    transition: .8s;
 }
 
 .reveal.active {
@@ -714,1168 +226,199 @@ footer {
     transform: translateY(0);
 }
 
-/* =====================================
-   RESPONSIVE DESIGN
-===================================== */
-
-@media(max-width: 950px) {
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .scene-container {
-        height: 420px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-@media(max-width: 650px) {
-
-    .menu-button {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 75px;
-        left: 0;
-        width: 100%;
-        background: #0b1325;
-        padding: 25px;
+@media(max-width: 750px) {
+    nav { padding: 18px 5%; }
+    nav a { margin-left: 10px; font-size: 12px; }
+    .hero {
         flex-direction: column;
-        gap: 20px;
+        text-align: center;
     }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .about-grid,
-    .skills-grid,
-    .projects-grid,
-    .cert-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .scene-container {
-        height: 350px;
-    }
-
-    .hero-info {
-        gap: 20px;
-    }
-
-    section {
-        padding: 75px 0;
-    }
-}
-
-@media(prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
+    .cube-container { margin-top: 35px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="background-glow glow-one"></div>
-<div class="background-glow glow-two"></div>
-
-<!-- =====================================
-     HEADER
-===================================== -->
-
-<header>
-    <div class="container navbar">
-
-        <a href="#home" class="logo">
-            JAI<span>SAI.</span>
-        </a>
-
-        <button class="menu-button" id="menuButton"
-                aria-label="Open navigation">☰</button>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
+<nav>
+    <div class="logo">JAI SAI.</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
     </div>
-</header>
+</nav>
 
-<!-- =====================================
-     HERO SECTION + 3D MODEL
-===================================== -->
-
+<!-- HOME -->
 <section class="hero" id="home">
+    <div class="hero-content">
+        <div class="tag">CLOUD • DEVOPS • AUTOMATION</div>
+        <h1>Hello, I'm <span>Jai Sai</span></h1>
+        <h2>Cloud DevOps Engineer</h2>
+        <br>
+        <p>
+            Building scalable cloud infrastructure, automating CI/CD
+            pipelines and deploying applications using AWS, Azure,
+            Docker, Kubernetes and Terraform.
+        </p>
+        <a href="#projects" class="btn">Explore My Work →</a>
+    </div>
 
-    <div class="container hero-grid">
-
-        <div class="hero-content">
-
-            <div class="availability">
-                <span class="pulse"></span>
-                CLOUD DEVOPS ENGINEER
-            </div>
-
-            <h1>
-                Hi, I'm <span class="gradient-text">Jai Sai</span>
-                <br>
-                I Build Scalable
-                <br>
-                Cloud Infrastructure.
-            </h1>
-
-            <p class="hero-description">
-                AWS Cloud DevOps Engineer with 2+ years of
-                experience in cloud infrastructure, Kubernetes
-                administration, CI/CD automation and production
-                support at Tata Consultancy Services –
-                GE Aerospace account.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="btn btn-primary">
-                    Explore My Work ↗
-                </a>
-
-                <a href="#contact" class="btn btn-secondary">
-                    Let's Connect
-                </a>
-
-            </div>
-
-            <div class="hero-info">
-
-                <div>
-                    <strong>2+</strong>
-                    <small>Years Experience</small>
-                </div>
-
-                <div>
-                    <strong>AWS</strong>
-                    <small>Cloud Platform</small>
-                </div>
-
-                <div>
-                    <strong>AZ-900</strong>
-                    <small>Azure Certified</small>
-                </div>
-
-            </div>
-
+    <div class="cube-container">
+        <div class="cube">
+            <div class="face front">☁️</div>
+            <div class="face back">🐳</div>
+            <div class="face right">⚙️</div>
+            <div class="face left">🚀</div>
+            <div class="face top">☸️</div>
+            <div class="face bottom">💻</div>
         </div>
-
-        <!-- THREE.JS 3D SCENE -->
-
-        <div class="scene-container">
-
-            <canvas id="three-scene"></canvas>
-
-            <div class="scene-label label-one">
-                ☁ AWS CLOUD
-            </div>
-
-            <div class="scene-label label-two">
-                ⚙ KUBERNETES
-            </div>
-
-            <div class="scene-label label-three">
-                🚀 DEVOPS ENGINEERING
-            </div>
-
-        </div>
-
     </div>
 </section>
 
-<!-- =====================================
-     STATISTICS
-===================================== -->
-
-<section style="padding-top:30px;">
-
-    <div class="container stats-grid reveal">
-
-        <div class="stat-card">
-            <h2>2+</h2>
-            <p>Years Experience</p>
-        </div>
-
-        <div class="stat-card">
-            <h2>2</h2>
-            <p>Cloud Platforms</p>
-        </div>
-
-        <div class="stat-card">
-            <h2>944</h2>
-            <p>AWS SAA Score / 1000</p>
-        </div>
-
-        <div class="stat-card">
-            <h2>2</h2>
-            <p>Cloud Certifications</p>
-        </div>
-
+<!-- ABOUT -->
+<section id="about" class="reveal">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="about">
+        <p>
+            I am a Cloud DevOps Engineer working at Tata Consultancy
+            Services (TCS), supporting the GE Aerospace account.
+            I have experience in cloud infrastructure, Kubernetes,
+            CI/CD automation, containerization and production support.
+            I enjoy building automated and reliable cloud environments.
+        </p>
     </div>
-
 </section>
 
-<!-- =====================================
-     ABOUT
-===================================== -->
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+    <h2 class="section-title">Technical <span>Skills</span></h2>
 
-<section id="about">
-
-    <div class="container reveal">
-
-        <div class="section-heading">
-            <h2>About <span class="gradient-text">Me</span></h2>
-            <p>My professional background and career profile</p>
+    <div class="skills">
+        <div class="card">
+            <h3>☁️ Cloud</h3>
+            <p>AWS, Azure, EC2, S3, VPC, IAM, RDS, AKS, EKS</p>
         </div>
 
-        <div class="about-grid">
-
-            <div class="glass-card">
-
-                <h3>Professional Summary</h3>
-
-                <p>
-                    Cloud DevOps Engineer with 2+ years of experience
-                    in cloud infrastructure, Kubernetes
-                    administration, CI/CD automation and
-                    production support.
-
-                    Currently working at Tata Consultancy Services
-                    on the GE Aerospace account.
-
-                    Experienced with AWS, Azure, Docker,
-                    Kubernetes, Terraform, Jenkins and
-                    infrastructure automation.
-
-                    Interested in designing reliable cloud
-                    environments, automating deployments and
-                    improving application availability.
-                </p>
-
-            </div>
-
-            <div class="glass-card">
-
-                <h3>Profile Information</h3>
-
-                <div class="detail-row">
-                    <span>Full Name</span>
-                    <span>Jai Sai</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Current Company</span>
-                    <span>TCS</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Account</span>
-                    <span>GE Aerospace</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Designation</span>
-                    <span>DevOps / Cloud Engineer</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Experience</span>
-                    <span>2+ Years</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Location</span>
-                    <span>India</span>
-                </div>
-
-                <div class="detail-row">
-                    <span>Primary Focus</span>
-                    <span>Cloud & DevOps</span>
-                </div>
-
-            </div>
-
+        <div class="card">
+            <h3>🐳 Containers</h3>
+            <p>Docker, Kubernetes, Helm, Container Orchestration</p>
         </div>
 
+        <div class="card">
+            <h3>⚙️ CI/CD</h3>
+            <p>Jenkins, GitHub Actions, Azure DevOps, ArgoCD</p>
+        </div>
+
+        <div class="card">
+            <h3>🏗️ Infrastructure</h3>
+            <p>Terraform, CloudFormation, Ansible</p>
+        </div>
+
+        <div class="card">
+            <h3>📊 Monitoring</h3>
+            <p>Prometheus, Grafana, CloudWatch, Azure Monitor</p>
+        </div>
+
+        <div class="card">
+            <h3>💻 Programming</h3>
+            <p>Linux, Shell Scripting, Python, Git, YAML</p>
+        </div>
     </div>
-
 </section>
 
-<!-- =====================================
-     SKILLS
-===================================== -->
-
-<section id="skills">
-
-    <div class="container reveal">
-
-        <div class="section-heading">
-            <h2>Technical <span class="gradient-text">Stack</span></h2>
-            <p>Technologies and engineering tools</p>
-        </div>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <div class="skill-icon">☁️</div>
-                <h3>Cloud Computing</h3>
-                <div class="tags">
-                    <span class="tag">AWS</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">EC2</span>
-                    <span class="tag">VPC</span>
-                    <span class="tag">IAM</span>
-                    <span class="tag">S3</span>
-                    <span class="tag">EBS</span>
-                    <span class="tag">EFS</span>
-                    <span class="tag">RDS</span>
-                    <span class="tag">ALB</span>
-                    <span class="tag">Route 53</span>
-                    <span class="tag">CloudWatch</span>
-                    <span class="tag">Lambda</span>
-                    <span class="tag">AKS</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🐳</div>
-                <h3>Containers & Orchestration</h3>
-                <div class="tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">Kubernetes</span>
-                    <span class="tag">EKS</span>
-                    <span class="tag">AKS</span>
-                    <span class="tag">Helm</span>
-                    <span class="tag">Ingress</span>
-                    <span class="tag">Deployments</span>
-                    <span class="tag">Services</span>
-                    <span class="tag">HPA</span>
-                    <span class="tag">ConfigMaps</span>
-                    <span class="tag">Secrets</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🚀</div>
-                <h3>CI/CD & Version Control</h3>
-                <div class="tags">
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">GitHub</span>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">Azure DevOps</span>
-                    <span class="tag">CodePipeline</span>
-                    <span class="tag">ArgoCD</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🏗️</div>
-                <h3>Infrastructure Automation</h3>
-                <div class="tags">
-                    <span class="tag">Terraform</span>
-                    <span class="tag">CloudFormation</span>
-                    <span class="tag">Ansible</span>
-                    <span class="tag">YAML</span>
-                    <span class="tag">Infrastructure as Code</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">📊</div>
-                <h3>Monitoring & Observability</h3>
-                <div class="tags">
-                    <span class="tag">Prometheus</span>
-                    <span class="tag">Grafana</span>
-                    <span class="tag">CloudWatch</span>
-                    <span class="tag">Azure Monitor</span>
-                    <span class="tag">Dynatrace</span>
-                    <span class="tag">DIVE</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">💻</div>
-                <h3>Programming & Operating Systems</h3>
-                <div class="tags">
-                    <span class="tag">Linux</span>
-                    <span class="tag">Shell Scripting</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Groovy</span>
-                    <span class="tag">Windows</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-     EXPERIENCE
-===================================== -->
-
-<section id="experience">
-
-    <div class="container reveal">
-
-        <div class="section-heading">
-            <h2>Work <span class="gradient-text">Experience</span></h2>
-            <p>My professional career journey</p>
-        </div>
-
-        <div class="timeline">
-
-            <div class="timeline-card">
-
-                <h3>DevOps / Cloud Engineer</h3>
-
-                <div class="timeline-date">
-                    April 2024 – Present
-                </div>
-
-                <h4>Tata Consultancy Services</h4>
-
-                <p>GE Aerospace Account | India</p>
-
-                <ul>
-                    <li>
-                        Supporting AWS and Azure cloud
-                        infrastructure and application workloads.
-                    </li>
-
-                    <li>
-                        Working with Kubernetes environments
-                        and container-based applications.
-                    </li>
-
-                    <li>
-                        Supporting CI/CD pipelines and
-                        deployment automation.
-                    </li>
-
-                    <li>
-                        Performing application monitoring
-                        and production troubleshooting.
-                    </li>
-
-                    <li>
-                        Handling ServiceNow incidents,
-                        ticket monitoring and SLA-based support.
-                    </li>
-
-                    <li>
-                        Working with CloudWatch, Azure Monitor
-                        and Dynatrace.
-                    </li>
-
-                    <li>
-                        Supporting incident investigation
-                        and root cause analysis.
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-     PROJECTS
-===================================== -->
-
-<section id="projects">
-
-    <div class="container reveal">
-
-        <div class="section-heading">
-            <h2>Featured <span class="gradient-text">Projects</span></h2>
-            <p>Cloud architecture, automation and DevOps labs</p>
-        </div>
-
-        <div class="projects-grid">
-
-            <div class="project-card">
-
-                <div class="project-icon">🌐</div>
-
-                <h3>AWS Three-Tier Architecture</h3>
-
-                <p>
-                    Designed a multi-tier cloud application
-                    architecture using AWS networking,
-                    compute, load balancing and database services.
-                </p>
-
-                <ul>
-                    <li>VPC, Public and Private Subnets</li>
-                    <li>Internet Gateway and NAT Gateway</li>
-                    <li>Application Load Balancers</li>
-                    <li>EC2 and Auto Scaling</li>
-                    <li>RDS MySQL-compatible database</li>
-                    <li>S3, IAM and CloudWatch</li>
-                </ul>
-
-                <div class="tags">
-                    <span class="tag">AWS</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">RDS</span>
-                </div>
-
-            </div>
-
-            <div class="project-card">
-
-                <div class="project-icon">☸️</div>
-
-                <h3>Kubernetes End-to-End Deployment</h3>
-
-                <p>
-                    Built a Kubernetes deployment environment
-                    with containerized applications,
-                    health checks, ingress and monitoring.
-                </p>
-
-                <ul>
-                    <li>Docker multi-stage builds</li>
-                    <li>Kubernetes Deployments and Services</li>
-                    <li>Ingress configuration</li>
-                    <li>Horizontal Pod Autoscaler</li>
-                    <li>Helm application deployment</li>
-                    <li>Prometheus and Grafana</li>
-                </ul>
-
-                <div class="tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">Kubernetes</span>
-                    <span class="tag">Helm</span>
-                    <span class="tag">Prometheus</span>
-                </div>
-
-                <p style="margin-top:20px;">
-                    <a href="https://github.com/jaisaikumar002-debug/devops-assignment"
-                       target="_blank" rel="noopener noreferrer"
-                       style="color:#38bdf8;">
-                        View GitHub Repository ↗
-                    </a>
-                </p>
-
-            </div>
-
-            <div class="project-card">
-
-                <div class="project-icon">⚙️</div>
-
-                <h3>Jenkins CI/CD Automation</h3>
-
-                <p>
-                    Implemented an automated deployment
-                    workflow using Jenkins, Ansible and
-                    application servers.
-                </p>
-
-                <ul>
-                    <li>Jenkins pipeline configuration</li>
-                    <li>Git source code management</li>
-                    <li>Automated build process</li>
-                    <li>Ansible configuration management</li>
-                    <li>Tomcat deployment</li>
-                </ul>
-
-                <div class="tags">
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">Ansible</span>
-                    <span class="tag">AWS</span>
-                    <span class="tag">Tomcat</span>
-                </div>
-
-            </div>
-
-            <div class="project-card">
-
-                <div class="project-icon">📈</div>
-
-                <h3>Application Monitoring</h3>
-
-                <p>
-                    Developed a monitoring setup for
-                    containerized applications with
-                    metrics collection and dashboards.
-                </p>
-
-                <ul>
-                    <li>Prometheus metrics collection</li>
-                    <li>Grafana dashboard configuration</li>
-                    <li>Application health endpoints</li>
-                    <li>Kubernetes readiness probes</li>
-                    <li>Container monitoring</li>
-                </ul>
-
-                <div class="tags">
-                    <span class="tag">Grafana</span>
-                    <span class="tag">Prometheus</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Linux</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-     CERTIFICATIONS
-===================================== -->
-
-<section id="certifications">
-
-    <div class="container reveal">
-
-        <div class="section-heading">
-            <h2>My <span class="gradient-text">Certifications</span></h2>
-            <p>Cloud certifications and technical credentials</p>
-        </div>
-
-        <div class="cert-grid">
-
-            <div class="cert-card">
-
-                <div class="award">🏆</div>
-
-                <h3>AWS Certified Solutions Architect – Associate</h3>
-
-                <p>Certification Code: SAA-C03</p>
-
-                <p><strong>Exam Score: 944 / 1000</strong></p>
-
-                <p>Exam Date: 04 July 2026</p>
-
-                <p>
-                    Cloud architecture, networking,
-                    storage, security, scalability
-                    and high availability.
-                </p>
-
-            </div>
-
-            <div class="cert-card">
-
-                <div class="award">🏅</div>
-
-                <h3>Microsoft Certified: Azure Fundamentals</h3>
-
-                <p>Certification Code: AZ-900</p>
-
-                <p>
-                    Azure cloud concepts, core services,
-                    security, governance and pricing.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-     CONTACT
-===================================== -->
-
-<section id="contact">
-
-    <div class="container reveal">
-
-        <div class="contact-box">
-
-            <h2>Let's Build Something <span class="gradient-text">Amazing</span></h2>
-
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <div class="projects">
+        <div class="card">
+            <h3>AWS Three-Tier Architecture</h3>
             <p>
-                Interested in Cloud DevOps, AWS infrastructure,
-                Kubernetes and automation opportunities?
+                Designed a scalable AWS application architecture
+                using VPC, EC2, Load Balancer, Auto Scaling,
+                RDS and S3.
             </p>
-
-            <div class="contact-links">
-
-                <a href="https://github.com/jaisaikumar002-debug"
-                   target="_blank" rel="noopener noreferrer">
-                    GitHub ↗
-                </a>
-
-                <a href="https://www.linkedin.com/in/attada-jaisaikumar"
-                   target="_blank" rel="noopener noreferrer">
-                    LinkedIn ↗
-                </a>
-
-            </div>
-
         </div>
 
-    </div>
+        <div class="card">
+            <h3>Kubernetes Deployment</h3>
+            <p>
+                Containerized applications using Docker and deployed
+                them on Kubernetes with Services, Ingress and HPA.
+            </p>
+        </div>
 
+        <div class="card">
+            <h3>CI/CD Automation</h3>
+            <p>
+                Built automated application build and deployment
+                pipelines using Jenkins and Docker.
+            </p>
+        </div>
+    </div>
 </section>
 
-<!-- =====================================
-     FOOTER
-===================================== -->
+<!-- CERTIFICATIONS -->
+<section class="reveal">
+    <h2 class="section-title">My <span>Certifications</span></h2>
+
+    <div class="certifications">
+        <div class="card">
+            <h3>AWS SAA-C03</h3>
+            <p>AWS Certified Solutions Architect – Associate</p>
+        </div>
+
+        <div class="card">
+            <h3>Microsoft AZ-900</h3>
+            <p>Azure Fundamentals Certification</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact reveal">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <p>Let's connect and build something amazing!</p>
+    <br>
+    <p>GitHub:
+        <a href="https://github.com/jaisaikumar002-debug" target="_blank">
+            View GitHub
+        </a>
+    </p>
+    <br>
+    <p>LinkedIn:
+        <a href="https://www.linkedin.com/in/attada-jaisaikumar"
+           target="_blank">Connect with me</a>
+    </p>
+    <br>
+    <p>Email: Add your professional email here</p>
+</section>
 
 <footer>
-
-    <div class="container">
-
-        <p>
-            © <span id="year"></span> Jai Sai.
-            Cloud DevOps Engineer.
-        </p>
-
-        <p style="margin-top:8px;">
-            Engineered with HTML, CSS, JavaScript & Three.js
-        </p>
-
-    </div>
-
+    © 2026 Jai Sai | Cloud DevOps Engineer
 </footer>
 
-<!-- =====================================
-     JAVASCRIPT INTERACTIONS
-===================================== -->
-
 <script>
-
-// MOBILE NAVIGATION
-
-const menuButton = document.getElementById("menuButton");
-const navLinks = document.getElementById("navLinks");
-
-menuButton.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
+// Scroll animation
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
     });
-});
-
-// DYNAMIC FOOTER YEAR
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-// SCROLL REVEAL ANIMATION
-
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    },
-    { threshold: 0.12 }
-);
+}, { threshold: 0.15 });
 
 document.querySelectorAll(".reveal").forEach(element => {
-    revealObserver.observe(element);
+    observer.observe(element);
 });
-
-</script>
-
-<!-- =====================================
-     THREE.JS 3D ENGINE
-===================================== -->
-
-<script type="module">
-
-import * as THREE from "three";
-
-// CREATE SCENE
-
-const canvas = document.getElementById("three-scene");
-
-const scene = new THREE.Scene();
-
-scene.background = null;
-
-// CAMERA
-
-const camera = new THREE.PerspectiveCamera(
-    45,
-    canvas.clientWidth / canvas.clientHeight,
-    0.1,
-    1000
-);
-
-camera.position.z = 8;
-
-// RENDERER
-
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    alpha: true,
-    antialias: true
-});
-
-renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
-);
-
-renderer.setSize(
-    canvas.clientWidth,
-    canvas.clientHeight
-);
-
-// LIGHTING
-
-const ambientLight = new THREE.AmbientLight(
-    0xffffff,
-    1.5
-);
-
-scene.add(ambientLight);
-
-const blueLight = new THREE.PointLight(
-    0x38bdf8,
-    80
-);
-
-blueLight.position.set(4, 3, 5);
-
-scene.add(blueLight);
-
-const purpleLight = new THREE.PointLight(
-    0xa78bfa,
-    60
-);
-
-purpleLight.position.set(-4, -3, 4);
-
-scene.add(purpleLight);
-
-// =====================================
-// 3D CLOUD OBJECT
-// =====================================
-
-const cloudGroup = new THREE.Group();
-
-scene.add(cloudGroup);
-
-// CLOUD BODY MADE FROM MULTIPLE SPHERES
-
-const cloudMaterial = new THREE.MeshStandardMaterial({
-    color: 0x38bdf8,
-    metalness: 0.65,
-    roughness: 0.22,
-    transparent: true,
-    opacity: 0.88
-});
-
-const cloudParts = [
-    {x:0, y:0, z:0, s:1.15},
-    {x:-1.0, y:0, z:0, s:0.85},
-    {x:1.0, y:0, z:0, s:0.85},
-    {x:-0.45, y:0.65, z:0, s:0.8},
-    {x:0.45, y:0.65, z:0, s:0.8},
-    {x:0, y:-0.3, z:0.2, s:0.9}
-];
-
-cloudParts.forEach(part => {
-
-    const geometry = new THREE.SphereGeometry(
-        part.s,
-        32,
-        32
-    );
-
-    const mesh = new THREE.Mesh(
-        geometry,
-        cloudMaterial
-    );
-
-    mesh.position.set(
-        part.x,
-        part.y,
-        part.z
-    );
-
-    cloudGroup.add(mesh);
-
-});
-
-// =====================================
-// 3D ORBIT RINGS
-// =====================================
-
-const ringMaterial = new THREE.MeshBasicMaterial({
-    color: 0x818cf8,
-    transparent: true,
-    opacity: 0.65
-});
-
-const ringOne = new THREE.Mesh(
-    new THREE.TorusGeometry(2.3, 0.012, 16, 120),
-    ringMaterial
-);
-
-ringOne.rotation.x = 1.2;
-ringOne.rotation.y = 0.3;
-
-cloudGroup.add(ringOne);
-
-const ringTwo = new THREE.Mesh(
-    new THREE.TorusGeometry(2.6, 0.009, 16, 120),
-    new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        transparent: true,
-        opacity: 0.5
-    })
-);
-
-ringTwo.rotation.x = 0.3;
-ringTwo.rotation.y = 1.2;
-
-cloudGroup.add(ringTwo);
-
-// =====================================
-// FLOATING 3D TECHNOLOGY CUBES
-// =====================================
-
-const cubeGroup = new THREE.Group();
-
-scene.add(cubeGroup);
-
-const cubeColors = [
-    0xff9900,
-    0x2496ed,
-    0x326ce5,
-    0x8b5cf6,
-    0x38bdf8
-];
-
-const cubeObjects = [];
-
-cubeColors.forEach((color, index) => {
-
-    const geometry = new THREE.BoxGeometry(
-        0.45, 0.45, 0.45
-    );
-
-    const material = new THREE.MeshStandardMaterial({
-        color: color,
-        metalness: 0.6,
-        roughness: 0.2,
-        emissive: color,
-        emissiveIntensity: 0.18
-    });
-
-    const cube = new THREE.Mesh(
-        geometry,
-        material
-    );
-
-    const angle = (index / cubeColors.length) *
-                  Math.PI * 2;
-
-    cube.position.set(
-        Math.cos(angle) * 3,
-        Math.sin(angle) * 2,
-        0
-    );
-
-    cube.userData.angle = angle;
-    cube.userData.speed = 0.3 + index * 0.05;
-
-    cubeGroup.add(cube);
-    cubeObjects.push(cube);
-
-});
-
-// =====================================
-// PARTICLE STARFIELD
-// =====================================
-
-const particleCount = 1800;
-
-const particlePositions = new Float32Array(
-    particleCount * 3
-);
-
-for (let i = 0; i < particleCount * 3; i += 3) {
-
-    particlePositions[i] =
-        (Math.random() - 0.5) * 18;
-
-    particlePositions[i + 1] =
-        (Math.random() - 0.5) * 18;
-
-    particlePositions[i + 2] =
-        (Math.random() - 0.5) * 12;
-
-}
-
-const particleGeometry =
-    new THREE.BufferGeometry();
-
-particleGeometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(
-        particlePositions,
-        3
-    )
-);
-
-const particleMaterial =
-    new THREE.PointsMaterial({
-        color: 0x38bdf8,
-        size: 0.025,
-        transparent: true,
-        opacity: 0.7
-    });
-
-const particles = new THREE.Points(
-    particleGeometry,
-    particleMaterial
-);
-
-scene.add(particles);
-
-// =====================================
-// MOUSE INTERACTION
-// =====================================
-
-let mouseX = 0;
-let mouseY = 0;
-
-document.addEventListener("mousemove", event => {
-
-    mouseX =
-        (event.clientX / window.innerWidth - 0.5);
-
-    mouseY =
-        (event.clientY / window.innerHeight - 0.5);
-
-});
-
-// =====================================
-// ANIMATION LOOP
-// =====================================
-
-const clock = new THREE.Clock();
-
-function animate() {
-
-    requestAnimationFrame(animate);
-
-    const time = clock.getElapsedTime();
-
-    // Cloud rotation
-
-    cloudGroup.rotation.y =
-        time * 0.25 + mouseX * 0.25;
-
-    cloudGroup.rotation.x =
-        Math.sin(time * 0.3) * 0.12 +
-        mouseY * 0.15;
-
-    // Floating movement
-
-    cloudGroup.position.y =
-        Math.sin(time * 1.1) * 0.15;
-
-    // Orbit animation
-
-    ringOne.rotation.z += 0.002;
-    ringTwo.rotation.z -= 0.002;
-
-    // Technology cubes rotation
-
-    cubeObjects.forEach((cube, index) => {
-
-        cube.rotation.x += 0.008;
-        cube.rotation.y += 0.012;
-
-        cube.position.y +=
-            Math.sin(time * cube.userData.speed + index) *
-            0.0015;
-
-    });
-
-    // Starfield rotation
-
-    particles.rotation.y = time * 0.015;
-
-    // Smooth mouse response
-
-    scene.rotation.y +=
-        (mouseX * 0.08 - scene.rotation.y) * 0.025;
-
-    renderer.render(scene, camera);
-
-}
-
-// =====================================
-// RESPONSIVE RESIZE
-// =====================================
-
-function resizeScene() {
-
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(width, height, false);
-
-}
-
-window.addEventListener("resize", resizeScene);
-
-resizeScene();
-
-animate();
-
 </script>
 
 </body>
